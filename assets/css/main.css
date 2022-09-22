@@ -1,0 +1,278 @@
+
+
+.header {
+    height: 120px;
+    background-image: linear-gradient(0, #fe6430, #f53e2d);
+}
+
+.header__navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__navbar-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 4px;
+}
+
+.header__navbar-item{
+    margin: 0 8px;
+    position: relative;
+}
+
+.header__navbar-item,
+.header__navbar-item-link {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: var(--white-color);
+    text-decoration: none;
+    font-weight: 300;
+}
+
+.header__navbar-item:hover,
+.header__navbar-item-link:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7)
+}
+
+.header__navbar-item--strong {
+    font-weight: 500;
+}
+
+.header__navbar-item--seperate::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-left: 1px solid #fb9086;
+    height: 15px;
+    right: -9px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header__navbar-icon-link {
+    text-decoration: none;
+    color: var(--white-color);
+    font-size: 15px;
+}
+
+.header__navbar-icon {
+    font-size: 1.8rem;
+    margin: 2px 2px;
+}
+
+.header__navbar-icon:hover {
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+
+.header__navbar-item-no-link {
+    cursor: text;
+    color: var(--white-color);
+}
+
+/*  QR Code */
+
+.header__navbar-item--show-qr:hover .header__qr {
+    display: block;
+}
+
+.header__qr {
+    animation: fadeIn ease 0.8s;
+    background-color: var(--white-color);
+    width: 186px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    display: none;
+}
+
+.header__qr-img {
+    width: 100%;
+}
+
+.header__qr-apps {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header__qr-download {
+    height: 18px;
+}  
+
+/* notif */
+
+.header__notify {
+    position: absolute;
+    top: 150%;
+    right: 0;
+    width: 400px;
+    background-color: var(--white-color);
+    border: 1px solid #d3d3d3;
+    /* xác định tâm của item */
+    transform-origin: top right;
+    /* will-change: opacity, transform; */
+    animation: headerNotifyGrowth ease 0.4s;
+    display: none;
+}
+.header__notify::after {
+    content: "";
+    /* background-color: black; */
+    background-color: transparent;
+    height: 28px;
+    width: 400px;
+    position: absolute;
+    top: -20px;
+    right: 0;
+    /* display: none; */
+    z-index: 1000;
+}
+
+/* tam giác */
+.header__notify::before {
+    /* content: "";
+    border-bottom: 20px solid var(--white-color);
+    border-top: 20px solid transparent;
+    border-top: 20px solid transparent;
+    border-top: 20px solid transparent; */
+    content: "";
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    background-color: var(--white-color);
+    width: 50px;
+    height: 20px;
+    z-index: 1000;
+    position: absolute;
+    top: -20px;
+    right: 20px;
+
+}
+
+/* The adjacent sibling selector (+) selects all elements that are the adjacent siblings of a specified element.
+
+The word "adjacent" means "immediately following" */
+/* dấu cộng để chỉ element sibling liền kề nó */
+/* header__notify liền kề header__notify--show */
+.header__notify--show:hover .header__notify {
+    display: block;
+    z-index: 1000;
+}
+
+@keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0)
+    }
+    to {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+.header__notify-header {
+    height: 40px;
+    background-color: var(--white-color);
+    cursor: default;
+}
+
+.header__notify-header h3 {
+    color: #999;
+    margin: 0 0 0 20px;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 40px;
+}
+
+.header__notify-list {
+    padding-left: 0;
+}
+
+.header__notify-item {
+    /* display: flex; */
+    /* height: ; */
+}
+
+.header__notify-item:hover {
+    background-color: #f7f7f7;
+}
+
+.header__notify-item--viewed {
+    background-color: rgba(238, 77, 36, 0.08);
+}
+
+.header__notify-link {
+    display: flex;
+    width: 100%;
+    padding: 8px;
+    text-decoration: none;
+}
+
+
+.header__notify-img {
+    align-self: center;
+    width: 48px;
+    object-fit: contain;
+}
+
+.header__notify-info {
+    margin-left: 8px;
+    display: inline-block;
+}
+
+.header__notify-name {
+    display: block;
+    font-size: 14px;
+    color: var(--text-color);
+    font-weight: 400;
+    line-height: 2rem;
+}
+
+.header__notify-description {
+    margin-top: 2px;
+    display: block;    
+    font-size: 12px;
+    color: #756f6e;
+    line-height: 1.6rem;
+}
+
+.header-notify-footer {
+    text-align: center;
+}
+
+.header-notify-footer:hover {
+    background-color: #f7f7f7;
+}
+
+.header-notify-footer-btn {
+    display: inherit;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 6px 0;
+}
+
+/* authen modal */
+
+.auth-form__container {
+    padding: 0 32px;
+}
+
+.auth-form__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.auth-form__heading {
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.auth-form__switch-btn {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    cursor: pointer;
+}
